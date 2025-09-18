@@ -12,7 +12,7 @@ interface VerifyEmailPageProps {
 export default function VerifyEmailPage({ params }: VerifyEmailPageProps) {
   const [status, setStatus] = useState<'loading' | 'success' | 'error'>('loading');
   const [message, setMessage] = useState('');
-  const [token, setToken] = useState<string>('');
+  // Removed unused token state
   const router = useRouter();
 
   useEffect(() => {
@@ -42,7 +42,7 @@ export default function VerifyEmailPage({ params }: VerifyEmailPageProps) {
           setStatus('error');
           setMessage(data.error || 'Error verificando email');
         }
-      } catch (err) {
+      } catch {
         setStatus('error');
         setMessage('Error de conexión');
       }

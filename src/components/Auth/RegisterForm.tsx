@@ -39,8 +39,8 @@ export default function RegisterForm({ onSwitchToLogin, onRegisterSuccess }: Reg
     try {
       const data = await apiClient.register(formData.nombre, formData.email, formData.password);
       onRegisterSuccess(data.message);
-    } catch (err: any) {
-      setError(err.message || 'Error de conexión');
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : 'Error de conexión');
     } finally {
       setLoading(false);
     }

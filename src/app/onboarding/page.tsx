@@ -26,7 +26,7 @@ export default function OnboardingPage() {
     setLoading(false);
   }, [router]);
 
-  const handleOnboardingComplete = (data: any) => {
+  const handleOnboardingComplete = (data: { user: { onboardingCompleted: boolean } }) => {
     // Actualizar usuario en localStorage con los datos del servidor
     const updatedUser = { ...data.user, onboardingCompleted: true };
     localStorage.setItem('user', JSON.stringify(updatedUser));

@@ -7,7 +7,7 @@ import RegisterForm from './RegisterForm';
 interface AuthModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onLoginSuccess: (token: string, user: any) => void;
+  onLoginSuccess: (token: string, user: { onboardingCompleted: boolean }) => void;
 }
 
 export default function AuthModal({ isOpen, onClose, onLoginSuccess }: AuthModalProps) {

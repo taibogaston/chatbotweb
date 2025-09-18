@@ -1,10 +1,10 @@
 'use client';
 
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+// Removed unused useRouter import
 
 interface OnboardingFormProps {
-  onComplete: (data: any) => void;
+  onComplete: (data: { user: { onboardingCompleted: boolean }; defaultChat?: unknown }) => void;
 }
 
 export default function OnboardingForm({ onComplete }: OnboardingFormProps) {
@@ -83,7 +83,7 @@ export default function OnboardingForm({ onComplete }: OnboardingFormProps) {
       } else {
         setError(data.error || 'Error completando onboarding');
       }
-    } catch (err) {
+    } catch {
       setError('Error de conexión');
     } finally {
       setLoading(false);

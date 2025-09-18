@@ -18,7 +18,7 @@ export default function AuthPage() {
     }
   }, [router]);
 
-  const handleLoginSuccess = (token: string, user: any) => {
+  const handleLoginSuccess = (token: string, user: { onboardingCompleted: boolean }) => {
     localStorage.setItem('token', token);
     localStorage.setItem('user', JSON.stringify(user));
     

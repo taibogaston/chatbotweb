@@ -19,7 +19,7 @@ export default function ChatDetailPage() {
   const qc = useQueryClient();
   const scrollerRef = useRef<HTMLDivElement | null>(null);
   const { token } = useAuth();
-  const [newChat, setNewChat] = useState<any>(null);
+  const [newChat, setNewChat] = useState<{ id: string; partner: { nombre: string; nacionalidad: string } } | null>(null);
 
   // Query para obtener información del chat
   const { data: chatInfo } = useQuery<Chat>({

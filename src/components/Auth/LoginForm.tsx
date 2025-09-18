@@ -6,7 +6,7 @@ import { apiClient } from '@/lib/api';
 
 interface LoginFormProps {
   onSwitchToRegister: () => void;
-  onLoginSuccess: (token: string, user: any) => void;
+  onLoginSuccess: (token: string, user: { onboardingCompleted: boolean }) => void;
 }
 
 export default function LoginForm({ onSwitchToRegister, onLoginSuccess }: LoginFormProps) {
@@ -38,8 +38,8 @@ export default function LoginForm({ onSwitchToRegister, onLoginSuccess }: LoginF
       } else {
         router.push('/onboarding');
       }
-    } catch (err: any) {
-      setError(err.message || 'Error de conexión');
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : 'Error de conexión');
     } finally {
       setLoading(false);
     }

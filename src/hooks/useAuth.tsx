@@ -77,7 +77,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       } else {
         return { success: false, error: data.error || 'Error en el login' };
       }
-    } catch (error) {
+    } catch {
       return { success: false, error: 'Error de conexión' };
     }
   };
@@ -99,7 +99,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       } else {
         return { success: false, error: data.error || 'Error en el registro' };
       }
-    } catch (error) {
+    } catch {
       return { success: false, error: 'Error de conexión' };
     }
   };

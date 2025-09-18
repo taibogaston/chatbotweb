@@ -33,14 +33,14 @@ class ApiClient {
   }
 
   // Auth endpoints
-  async login(email: string, password: string) {
+  async login(email: string, password: string): Promise<{ token: string; user: { onboardingCompleted: boolean } }> {
     return this.request('/auth/login', {
       method: 'POST',
       body: JSON.stringify({ email, password }),
     });
   }
 
-  async register(nombre: string, email: string, password: string) {
+  async register(nombre: string, email: string, password: string): Promise<{ message: string }> {
     return this.request('/auth/register', {
       method: 'POST',
       body: JSON.stringify({ nombre, email, password }),
@@ -77,7 +77,7 @@ class ApiClient {
     return this.request('/users/me');
   }
 
-  async updateUserPreferences(preferences: any) {
+  async updateUserPreferences(preferences: Record<string, unknown>) {
     return this.request('/users/preferences', {
       method: 'PATCH',
       body: JSON.stringify(preferences),
@@ -85,7 +85,7 @@ class ApiClient {
   }
 
   // Onboarding endpoints
-  async completeOnboarding(data: any) {
+  async completeOnboarding(data: Record<string, unknown>) {
     return this.request('/onboarding/complete', {
       method: 'POST',
       body: JSON.stringify(data),
@@ -105,7 +105,7 @@ class ApiClient {
     return this.request(`/chats/${chatId}`);
   }
 
-  async createChat(partner: any) {
+  async createChat(partner: Record<string, unknown>) {
     return this.request('/chats', {
       method: 'POST',
       body: JSON.stringify({ partner }),
